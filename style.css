@@ -1,0 +1,213 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-color: #f9f8f2;      /* Cream background like the image */
+    --accent-green: #0f8b73;  /* The "Call to Action" green */
+    --text-dark: #001d2f;     /* Dark navy text */
+    --text-light: #445566;    /* Softer gray for paragraphs */
+    --stats-bg: #fbeee6;      /* Light pinkish bg for footer */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #c0392b; /* Red logo color */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    margin-left: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-sm {
+    background: #e1e1e1;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* --- Buttons --- */
+.btn-main {
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px; /* Full pill shape */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(15, 139, 115, 0.3);
+}
+
+.btn-main:hover {
+    transform: translateY(-2px);
+    background-color: #0c6e5b;
+}
+
+/* --- Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.subheadline {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.guarantee {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+/* Graphic Hill Shape (CSS Art) */
+.hero-graphic {
+    margin-top: 50px;
+    height: 100px;
+    background: #e64c3c;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    width: 120%;
+    margin-left: -10%;
+}
+
+/* --- Zig-Zag Sections --- */
+.feature-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 0;
+    gap: 50px;
+}
+
+/* The Magic: This flips the order for the middle section */
+.feature-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.feature-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Placeholder squares to represent images */
+.img-placeholder {
+    width: 300px;
+    height: 250px;
+    background: #ddeeff;
+    border-radius: 10px;
+    /* Fancy CSS patterns to mimic illustrations */
+}
+.wall-pattern { background-image: radial-gradient(#aaccee 2px, transparent 2px); background-size: 20px 20px; background-color: #34495e; }
+.lamp-pattern { background: linear-gradient(to bottom right, #f39c12, #e67e22); border-radius: 100px 100px 10px 10px;}
+.device-pattern { background: #8e44ad; box-shadow: 10px 10px 0 #eee; }
+
+/* --- 3 Column Benefits --- */
+.benefits-grid {
+    display: flex;
+    text-align: center;
+    gap: 40px;
+    padding: 80px 20px;
+}
+
+.benefit-card {
+    flex: 1;
+}
+
+.icon-circle {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* --- Stats Footer --- */
+.stats-footer {
+    background-color: var(--stats-bg);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.stats-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 40px;
+}
+
+.big-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.link-text {
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--accent-green);
+    text-decoration: underline;
+}
+/* Add this to style.css */
+.responsive-img {
+    width: 100%;            /* Fills the container width */
+    max-width: 500px;       /* Prevents it from getting too huge on big screens */
+    height: auto;           /* Keeps the image shape (aspect ratio) correct */
+    border-radius: 15px;    /* smooth rounded corners */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Adds a professional shadow */
+}
