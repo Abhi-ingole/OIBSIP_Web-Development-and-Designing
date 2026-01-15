@@ -1,0 +1,371 @@
+/* --- CSS Variables & Reset --- */
+:root {
+    /* The Unique Color Palette: Deep Navy & Electric Teal */
+    --bg-main: #0a192f; 
+    --bg-secondary: #112240;
+    --accent: #64ffda; /* This is the "different" color, replacing the yellow */
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Courier New', Courier, monospace; /* Using a system monospace font for accents */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Utility Classes */
+.font-mono { font-family: var(--font-mono); font-size: 0.9rem;}
+.accent-text { color: var(--accent); }
+
+.section-container {
+    padding: 100px 10vw;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    font-size: clamp(26px, 5vw, 32px);
+    color: var(--text-primary);
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 300px;
+    background-color: var(--bg-secondary);
+    margin-left: 20px;
+}
+
+.section-heading span {
+    margin-right: 10px;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5vw;
+    position: fixed;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.logo {
+    color: var(--accent);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.btn-nav {
+    border: 1px solid var(--accent);
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: var(--accent) !important;
+}
+.btn-nav:hover { background: rgba(100, 255, 218, 0.1); }
+
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10vw;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 80px; /* space for navbar */
+}
+
+.hero-content {
+    flex: 1.5;
+}
+
+.hero-content h1 {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.hero-content h2 {
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    max-width: 500px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* The main CTA button */
+.btn-main {
+    display: inline-block;
+    padding: 1.2rem 2rem;
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-main:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0 rgba(100, 255, 218, 0.2);
+}
+
+
+/* Unique Hero Image styling */
+.hero-image-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    /* Unique touch: Rounded blob shape instead of a square or circle */
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    position: relative;
+    z-index: 2;
+    filter: grayscale(100%) contrast(1);
+    transition: all 0.5s ease;
+}
+
+/* The offset decorative box behind the image */
+.image-deco-box {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 300px;
+    height: 300px;
+    border: 3px solid var(--accent);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.hero-image-container:hover .profile-img {
+    filter: none; /* Add color back on hover */
+    transform: translate(-5px, -5px);
+}
+.hero-image-container:hover .image-deco-box {
+    transform: translate(5px, 5px);
+}
+
+
+/* --- Skills Section (Offset Grid) --- */
+.skills-grid {
+    display: grid;
+    /* Auto-fit creates as many columns as fit with min width 300px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-card {
+    background-color: var(--bg-secondary);
+    padding: 40px 30px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Unique touch: Stagger every second card down */
+.moved-down {
+    transform: translateY(30px);
+}
+
+.skill-card:hover {
+    transform: translateY(-10px); /* Lifts up on hover */
+}
+.moved-down:hover {
+    transform: translateY(20px); /* Still lifts, but relative to its staggered position */
+}
+
+.skill-card .ico {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.skill-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.skill-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* The highlighted card style */
+.highlight-card {
+    box-shadow: inset 0 0 0 2px var(--accent);
+    background: rgba(100, 255, 218, 0.05);
+}
+
+
+/* --- Portfolio Section (Interactive List) --- */
+.project-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+    border-bottom: 1px solid var(--bg-secondary);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.project-item:hover {
+    padding-left: 40px; /* Indent on hover */
+    background-color: var(--bg-secondary);
+}
+
+.project-number {
+    color: var(--text-secondary);
+    margin-right: 30px;
+}
+
+.project-title {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+    flex-grow: 1; /* Takes up available space */
+}
+
+.project-item:hover .project-title {
+    color: var(--accent);
+}
+
+.project-category {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+
+/* --- Contact Section --- */
+.contact-section {
+    padding: 150px 10vw 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh; /* Tall section */
+}
+
+.contact-content {
+    max-width: 600px;
+    margin-bottom: auto; /* Pushes footer to bottom */
+}
+
+.big-contact-title {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 20px 0;
+}
+
+.contact-desc {
+    color: var(--text-secondary);
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+footer {
+    margin-top: 100px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* --- Responsive adjustments for Tablet/Mobile --- */
+@media (max-width: 968px) {
+    .hero-section {
+        flex-direction: column-reverse; /* Image on top on mobile */
+        justify-content: center;
+        text-align: center;
+        padding-top: 120px;
+    }
+    
+    .hero-content { align-items: center; }
+    .hero-description { margin: 20px auto 40px auto; }
+    
+    .hero-image-container { margin-bottom: 50px; }
+    .profile-img, .image-deco-box { width: 250px; height: 250px; }
+    .image-deco-box { top: 15px; right: 15px; }
+
+    .nav-links { display: none; /* Hide nav links for simplicity on small screens */ }
+
+    /* Remove stagger effect on mobile for cleaner stack */
+    .moved-down { transform: translateY(0); }
+    .skill-card:hover, .moved-down:hover { transform: translateY(-5px);}
+
+    /* Adjust portfolio list for smaller screens */
+    .project-item { flex-direction: column; align-items: flex-start; gap: 10px;}
+    .project-number { display: none;}
+    .project-item:hover { padding-left: 20px; }
+}
